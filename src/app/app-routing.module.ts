@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxPermissionsGuard } from 'ngx-permissions';
-import { WelcomeComponent } from './page/welcome/welcome.component';
 import { LoginComponent } from './page/login/login.component';
+import { WelcomeComponent } from './page/welcome/welcome.component';
 import { AuthGuard } from './shared/security/auth.guard';
 
 const routes: Routes = [

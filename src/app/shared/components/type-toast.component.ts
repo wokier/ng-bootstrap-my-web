@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { NgbToast } from '@ng-bootstrap/ng-bootstrap/toast/toast';
 import { TranslateService } from '@ngx-translate/core';
 

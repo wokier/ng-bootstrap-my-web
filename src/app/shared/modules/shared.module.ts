@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginComponent } from '../../page/login/login.component';
 import { BootstrapModule } from './bootstrap.module';
 import { MaterialModule } from './material.module';
 

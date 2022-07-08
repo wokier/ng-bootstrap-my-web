@@ -1,14 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from '@reactivex/rxjs/dist/package';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { User } from '../model/user/user.model';
-// import { Observable } from 'rxjs';
 
 @Injectable()
 export class SessionService {
-
-  private static PATH = 'td/api/session';
 
   private currentUser: User|null;
 
@@ -18,7 +15,7 @@ export class SessionService {
   }
 
   public login(username: string, password: string): Observable<User> {
-    return of(new User(username, ['MY_USER']));
+    return scheduled([new User(username, ['MY_USER'])], asyncScheduler);
   }
 
   public next(value: User|null) {
@@ -28,7 +25,7 @@ export class SessionService {
   }
 
   logout(): Observable<string> {
-    return of('ok');
+    return scheduled(['ok'], asyncScheduler);
   }
 
   getUser() {

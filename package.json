@@ -29,7 +29,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "~2.11.5",
-    "@reactivex/rxjs": "6.6.7",
+    "rxjs": "^7.5.5",
     "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.180",
     "autoprefixer": "^10.4.7",

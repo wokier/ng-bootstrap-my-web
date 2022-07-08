@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { User } from '../../model/user/user.model';
+import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 
 @Component({
