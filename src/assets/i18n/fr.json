@@ -1,0 +1,12 @@
+{
+  "commmon": {
+  },
+  "toast": {
+    "error": "❗Erreur",
+    "warn": "❕Avertissement"
+  },
+  "login": {
+    "user": "Utilisateur",
+    "password": "Mot de Passe"
+  }
+}

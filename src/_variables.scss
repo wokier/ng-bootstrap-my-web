@@ -1,0 +1,46 @@
+$primary-color: #0088CE;
+$light-color: #8DE8FE;
+$dark-color: #0C131F;
+
+$green-color: #8DFEDC;
+$purple-color: #C099FF;
+$yellow-color: #F6DF5A;
+
+$grey-text: #cccccc;
+
+$fa-font-path: "~font-awesome/fonts";
+/* icon colors */
+$icon-add: #1e90ff;
+$icon-delete: #da2121;
+$icon-info: #6495ed;
+
+/* panel colors */
+$panel-border-1: 1px solid #e2e7e9;
+$panel-border-2: 1px solid #c6d3d8;
+$panel-background-1: #fbfbfb;
+$panel-background-2: #fff;
+
+/* button toggle colors */
+$btn-toggle-background: #b4d8ff;
+$btn-toggle-hover: #b4d8ff80;
+
+/* label colors */
+$label-error: red;
+
+/* rows colors */
+$row-odd-background: #e6f2ff;
+$row-even-background: rgba(0, 0, 0, 0.005);
+$row-hover: #cfe4fb;
+$new-row-background: #ffffe6;
+
+/* table colors */
+$th-header-cell: #666666;
+$column-delete: #fff;
+
+/* accordian colors */
+$header-expanded: #b4d8ff;
+$header-expanded-hover: #b4d8ff80;
+$header-error: #ffa49e;
+
+/* form disabled colord */
+$form-disabled: rgba(0, 0, 0, 0.87);

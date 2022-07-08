@@ -1,0 +1,23 @@
+@import 'src/variables';
+
+.banner-item {
+  margin: 10px 6px;
+}
+
+span {
+  font-weight: lighter;
+  margin-right: 16px;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+}
+
+.env {
+  color: $grey-text;
+}
+
+.spacer {
+  flex: 1;
+}

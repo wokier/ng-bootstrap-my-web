@@ -1,0 +1,32 @@
+<div
+  *ngIf="!isLoading && !sessionService.getUser()"
+  class="centered"
+  input-group totalWidt=32 inputWidth=20>
+  <h3><i class="fa fa-user"></i> &nbsp; {{'Login' | translate}}</h3>
+  <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
+    <mat-form-field required appearance="standard" class="login-field">
+      <mat-label translate>login.user</mat-label>
+      <input matInput formControlName="username" value="">
+    </mat-form-field>
+    <mat-form-field required appearance="standard" class="login-field">
+      <mat-label translate>login.password</mat-label>
+      <input matInput formControlName="password" value="" [type]="'password'">
+    </mat-form-field>
+    <br/>
+    <div class="right">
+      <button type="submit" id="login" class="btn btn-primary"
+              [disabled]="!isLoginValid()"
+              [title]="'Vous devez renseigner votre identifiant et mot de passe.'">Login
+      </button>
+      <button id="reset" class="btn btn-default right" (click)="clear()">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
+<div
+  *ngIf="isLoading"
+  class="centered">
+  <mat-spinner></mat-spinner>
+</div>
+<my-toast #toast></my-toast>

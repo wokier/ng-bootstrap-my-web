@@ -1,0 +1,8 @@
+<ul ngbNav orientation="vertical" class="nav nav-pills" *ngIf="sessionService.getUser()">
+  <li ngbNavItem class="nav-item">
+    <a class="nav-link" routerLink="canaux" routerLinkActive="active" translate>welcome</a>
+  </li>
+  <li ngbNavItem class="nav-item">
+    <a class="nav-link disabled" href="#" translate>other</a>
+  </li>
+</ul>

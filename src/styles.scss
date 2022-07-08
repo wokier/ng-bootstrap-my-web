@@ -1,0 +1,19 @@
+@import '~font-awesome/scss/font-awesome.scss';
+@import '~bootswatch/dist/materia/_variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootswatch/dist/materia/_bootswatch.scss';
+@import 'src/assets/css/overrides.scss';
+@import 'src/assets/css/toast.scss';
+
+html, body {
+  height: 85vh;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.right {
+  float: right;
+}

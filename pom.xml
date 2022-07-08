@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.sncf.ritmx.ro</groupId>
+    <artifactId>ro-param-parent</artifactId>
+    <version>4.47.146-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>my-web</artifactId>
+  <name>My Web</name>
+  <packaging>jar</packaging>
+
+  <properties>
+    <buildCmd />
+    <skipITs>false</skipITs>
+    <sonar.sources>src</sonar.sources>
+    <sonar.tests>src</sonar.tests>
+    <sonar.test.inclusions>**/*.spec.ts</sonar.test.inclusions>
+    <sonar.testExecutionReportPaths>src/reports/ut_report.xml</sonar.testExecutionReportPaths>
+    <sonar.javascript.lcov.reportPaths>src/coverage/lcov.info</sonar.javascript.lcov.reportPaths>
+    <sonar.typescript.lcov.reportPaths>src/coverage/lcov.info</sonar.typescript.lcov.reportPaths>
+    <sonar.coverage.exclusions>karma.conf.js,polyfills.ts</sonar.coverage.exclusions>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>DEV</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <buildCmd>buildprod</buildCmd>
+      </properties>
+    </profile>
+  </profiles>
+
+  <build>
+
+    <finalName>my-web</finalName>
+
+    <plugins>
+
+      <!-- Npm & Nodejs -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+
+        <executions>
+
+          <!-- npm install -->
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>initialize</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>install</argument>
+                <argument>--legacy-peer-deps</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- npm run build prod -->
+          <execution>
+            <id>npm run build:prod</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>initialize</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run-script</argument>
+                <argument>${buildCmd}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+
+          <!-- prepare npm test -->
+          <execution>
+            <id>npm install chrome</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>pre-integration-test</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>i</argument>
+                <argument>-D</argument>
+                <argument>--legacy-peer-deps</argument>
+                <argument>puppeteer</argument>
+                <argument>karma-chrome-launcher</argument>
+              </arguments>
+              <skip>${skipITs}</skip>
+            </configuration>
+          </execution>
+
+          <!-- npm test -->
+          <execution>
+            <id>npm test</id>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <phase>integration-test</phase>
+            <configuration>
+              <executable>npm</executable>
+              <arguments>
+                <argument>run-script</argument>
+                <argument>testci</argument>
+              </arguments>
+              <skip>${skipITs}</skip>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <index>false</index>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Build-Date-Time>${maven.build.timestamp}</Build-Date-Time>
+              <Built-By>RITMx</Built-By>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <configuration>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>dist</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+
+  </build>
+
+</project>
