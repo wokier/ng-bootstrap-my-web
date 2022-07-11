@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { NgbToast } from '@ng-bootstrap/ng-bootstrap/toast/toast';
+import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 
 export enum ToastType {
